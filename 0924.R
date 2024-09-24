@@ -31,9 +31,53 @@ rownames(female)
 rownames(female)<-c('Vanessa', 'Vicky', 'Michelle', 'Joyce', 'Victoria')
 female
 
+
+
+# Sample
+View(sample)
+
+1:nrow(female) # 從1開始列出每個數字
+nrow(female) # 直接列出有幾個
+1:1000 #列出1~1000
+
+sf<-sample(1:nrow(female), 2) # filter with two randomly selected female students
+sf # the selection
+
+
+
+# Sorting
+ind1<-order(students$height)
+students[ind1,]
+
+students[order(students$height),] #簡化行數的寫法
+students[order(-students$height),] # Reverse!
+
+
+
+# Recording: ifelse
+students$color<-ifelse(students$gender=='male', 'blue', 'red') #create a new column
+students$gender<-ifelse(students$gender=='male', 'blue', 'red') #replace an existing column
+students$color<-NULL
+students
+
 rm(list=ls())
 
 # practice 2.1
 data("iris")
 set<-iris$Species=='setosa'
 setosa<-iris[set,]
+ver<-iris$Species=='versicolor'
+versicolor<-iris[ver,]
+vir<-iris$Species=='virginica'
+virginica<-iris[vir,]
+
+#practice 2.2
+data("iris")
+iris$color<-ifelse(iris$Species=='setosa', 'purple', ifelse(iris$Species=='versicolor', 'blue', 'pink'))
+iris[order(-iris$Sepal.Width),]
+
+# subset on versicolor
+iris[iris$Species=='versicolor',]
+
+iris$color<-NULL
+iris
