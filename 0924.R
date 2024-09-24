@@ -22,4 +22,13 @@ students$gender=='female' # TRUE/FALSE
 f<-students$gender=='female' # f是用來選擇female的filter
 students[f,] #將f套用到row的篩選
 
+students[f,]->female
+female
+
+colnames(female)
+rownames(female)
+
+rownames(female)<-c('Vanessa', 'Vicky', 'Michelle', 'Joyce', 'Victoria')
+female
+
 rm(list=ls())
