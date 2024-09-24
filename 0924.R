@@ -32,3 +32,8 @@ rownames(female)<-c('Vanessa', 'Vicky', 'Michelle', 'Joyce', 'Victoria')
 female
 
 rm(list=ls())
+
+# practice 2.1
+data("iris")
+set<-iris$Species=='setosa'
+setosa<-iris[set,]
