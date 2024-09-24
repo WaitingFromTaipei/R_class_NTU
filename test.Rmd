@@ -1,0 +1,19 @@
+---
+title: "Untitled"
+output: html_document
+date: "2024-09-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Manipulation
+
+### Basic maniputation
+
+```{r}
+data("iris")
+iris
+```
+
