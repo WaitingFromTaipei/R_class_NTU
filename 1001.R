@@ -122,7 +122,7 @@ income_long <- income %>%  pivot_longer(cols = -state,
                                         names_sep = "_", 
                                         values_to = "income")
 income_long
-
+# 轉回wide table
 income_long %>% pivot_wider(names_from = c(gender,work), 
                             values_from = income,
                             names_sep = ".")
