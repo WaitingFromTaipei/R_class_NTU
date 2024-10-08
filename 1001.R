@@ -8,7 +8,7 @@ library("dplyr")
 
 
 
-# "summarize"
+# "summarize": to gain insights (mean, median, mode, etc.) from a data set
 summarised <- summarise(iris, Mean.Width = mean(Sepal.Width))
 head(summarised)
 
