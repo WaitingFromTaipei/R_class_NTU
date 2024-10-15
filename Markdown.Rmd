@@ -4,7 +4,8 @@ output: html_document
 date: "2024-10-15"
 ---
 # Data frame
-
+## Data frame
+### Data frame
 **data frame**
 
 `tidyr`
@@ -37,4 +38,5 @@ my.exp[[2]]<-growth
 names(my.exp)[[2]]<-"growth"
 my.exp[[3]]<-"growth is not consistent across plants"
 my.exp
+
 ```
