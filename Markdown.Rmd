@@ -1,0 +1,40 @@
+---
+title: "Markdown"
+output: html_document
+date: "2024-10-15"
+---
+# Data frame
+
+**data frame**
+
+`tidyr`
+
+
+```{r, warning=FALSE, message=FALSE}
+plants <- c("plant1", "plant2", "plant3", "plant4", "plant5")
+start_experiment <- c(4, 5, 3, 6, 7)
+end_experiment <- c(9, 6, 5, 4, 7)
+dat    <- data.frame(plants, start_experiment, end_experiment)
+dat
+
+library(tidyr)
+dat.2<-dat %>%
+  tibble::rownames_to_column(var="plant") %>%
+  pivot_longer(start_experiment:end_experiment, names_to = "time", values_to = "height")
+dat.2
+
+my.exp<-NULL
+my.exp[[1]]<-dat.2
+my.exp
+
+growth <- NULL
+growth[[1]]<-rownames(dat.2)
+growth[[2]]<-((dat$end_experiment-dat$start_experiment)/dat$start_experiment)
+growth[[3]]<-data.frame(plant=row.names(dat), growth=growth[[2]])
+growth
+
+my.exp[[2]]<-growth
+names(my.exp)[[2]]<-"growth"
+my.exp[[3]]<-"growth is not consistent across plants"
+my.exp
+```
