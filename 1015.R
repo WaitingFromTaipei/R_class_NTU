@@ -123,18 +123,18 @@ polygon(c(50,50,100,100),c(50,80,80,50), col='gray', density=5)
 # get my working directory
 getwd()
 # Saving in bitmap format
-bmp(file = "outputs/control.bmp")
+bmp(file = "outputs/control_1.bmp")
 plot(control)
 dev.off()
 
-jpeg(file = "control.jpg", quality = 20)
+jpeg(file = "control_2.jpg", quality = 20)
 plot(control)
 dev.off()
 
-postscript(file = "control.ps")
+postscript(file = "control_3.ps")
 plot(control)
 dev.off()
 
-pdf(file = "control.pdf", paper = "A4")
+pdf(file = "control_4.pdf", paper = "A4")
 plot(control)
 dev.off()
