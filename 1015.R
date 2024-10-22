@@ -127,14 +127,30 @@ bmp(file = "outputs/control_1.bmp")
 plot(control)
 dev.off()
 
-jpeg(file = "control_2.jpg", quality = 20)
+jpeg(file = "outputs/control_2.jpg", quality = 20)
 plot(control)
 dev.off()
 
-postscript(file = "control_3.ps")
+postscript(file = "outputs/control_3.ps")
 plot(control)
 dev.off()
 
-pdf(file = "control_4.pdf", paper = "A4")
+pdf(file = "outputs/control_4.pdf", paper = "A4")
 plot(control)
 dev.off()
+
+
+# Practice 4.1
+data(iris)
+plot(iris$Petal.Length, iris$Petal.Width,
+     xlab = "Petal length (cm)",
+     ylab = "Petal width (cm)",
+     main = "Petal width vs. length",
+     cex.main = 1.5,
+     pch = c(1,2,3)[as.numeric(iris$Species)],
+     col = c("black","red","green")[as.numeric(iris$Species)])
+
+pairs(iris[1:4],
+      main = "Petal width vs. length",
+      pch = 21,
+      bg = c("black","red","green")[as.numeric(iris$Species)])
