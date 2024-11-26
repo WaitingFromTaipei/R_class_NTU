@@ -4,6 +4,7 @@ library(corrplot)
 library(mvabund)
 library(ggplot2)
 library(lme4)
+library(mgcv)
 
 # Factorial ANOVA
 
@@ -171,3 +172,40 @@ for (iBoot in 1:nBoot)
 }
 mean(lrStat > lrObs) # P-value for test of Estuary effect
 
+
+
+# Generalised additive models (GAM)
+# 1. GAMs are just GLMs 
+# 2. GAMs fit wiggly terms
+# 3. use + s(x) not x in your syntax
+# 4. use method = "REML"
+# 5. always look at gam.check()
+
+x <- seq(0, pi * 2, 0.1)
+sin_x <- sin(x)
+y <- sin_x + rnorm(n = length(x), mean = 0, sd = sd(sin_x / 2))
+Sample_data <- data.frame(y, x)
+ggplot(Sample_data, aes(x, y)) +
+  geom_point()
+
+# Let’s fit a normal linear model and check residuals
+lm_y <- lm(y ~ x, data = Sample_data)
+ggplot(Sample_data, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = lm)
+
+plot(lm_y, which = 1)
+# Clearly, the residuals are not evenly spread across values of x , that’s call a pattern in the residuals
+
+# The package mgcv is the package of choice for running GAMs
+gam_y <- gam(y ~ s(x), method = "REML")
+x_new <- seq(0, max(x), length.out = 100)
+y_pred <- predict(gam_y, data.frame(x = x_new))
+
+ggplot(Sample_data, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "gam", formula = y ~ s(x))
+
+dev.off()
+par(mfrow = c(2, 2))
+gam.check(gam_y)
